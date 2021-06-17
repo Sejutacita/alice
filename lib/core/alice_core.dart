@@ -14,7 +14,6 @@ import 'package:rxdart/rxdart.dart';
 class AliceCore {
   /// Should user be notified with notification if there's new request catched
   /// by Alice
-  final bool showNotification;
 
   /// Should inspector be opened on device shake (works only with physical
   /// with sensors)
@@ -49,16 +48,12 @@ class AliceCore {
   /// Creates alice core instance
   AliceCore(
     this.navigatorKey, {
-    required this.showNotification,
     required this.showInspectorOnShake,
     required this.darkTheme,
     required this.notificationIcon,
     required this.maxCallsCount,
     this.directionality,
   }) {
-    if (showNotification) {
-      _callsSubscription = callsSubject.listen((_) => _onCallsChanged());
-    }
     if (showInspectorOnShake) {
       _shakeDetector = ShakeDetector.autoStart(
         onPhoneShake: () {
