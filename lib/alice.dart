@@ -51,7 +51,6 @@ class Alice {
     _navigatorKey = navigatorKey ?? GlobalKey<NavigatorState>();
     _aliceCore = AliceCore(
       _navigatorKey,
-      showNotification: showNotification,
       showInspectorOnShake: showInspectorOnShake,
       darkTheme: darkTheme,
       notificationIcon: notificationIcon,
