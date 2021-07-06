@@ -97,9 +97,9 @@ class AliceCore {
 
   /// Add alice http call to calls subject
   void addCall(AliceHttpCall call) {
-    final callsCount = callsSubject.value?.length ?? 0;
+    final callsCount = callsSubject.value.length;
     if (callsCount >= maxCallsCount) {
-      final originalCalls = callsSubject.value!;
+      final originalCalls = callsSubject.value;
       final calls = List<AliceHttpCall>.from(originalCalls);
       calls.sort(
           (call1, call2) => call1.createdTime.compareTo(call2.createdTime));
@@ -145,7 +145,7 @@ class AliceCore {
   void addHttpCall(AliceHttpCall aliceHttpCall) {
     assert(aliceHttpCall.request != null, "Http call request can't be null");
     assert(aliceHttpCall.response != null, "Http call response can't be null");
-    callsSubject.add([...callsSubject.value!, aliceHttpCall]);
+    callsSubject.add([...callsSubject.value, aliceHttpCall]);
   }
 
   /// Remove all calls from calls subject
