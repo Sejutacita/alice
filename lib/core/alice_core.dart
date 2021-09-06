@@ -108,7 +108,7 @@ class AliceCore {
 
       callsSubject.add(originalCalls);
     } else {
-      callsSubject.add([...callsSubject.value!, call]);
+      callsSubject.add([...callsSubject.value, call]);
     }
   }
 
@@ -122,7 +122,7 @@ class AliceCore {
     }
 
     selectedCall.error = error;
-    callsSubject.add([...callsSubject.value!]);
+    callsSubject.add([...callsSubject.value]);
   }
 
   /// Add response to existing alice http call
@@ -138,7 +138,7 @@ class AliceCore {
     selectedCall.duration = response.time.millisecondsSinceEpoch -
         selectedCall.request!.time.millisecondsSinceEpoch;
 
-    callsSubject.add([...callsSubject.value!]);
+    callsSubject.add([...callsSubject.value]);
   }
 
   /// Add alice http call to calls subject
@@ -154,10 +154,10 @@ class AliceCore {
   }
 
   AliceHttpCall? _selectCall(int requestId) =>
-      callsSubject.value!.firstWhereOrNull((call) => call.id == requestId);
+      callsSubject.value.firstWhereOrNull((call) => call.id == requestId);
 
   /// Save all calls to file
   void saveHttpRequests(BuildContext context) {
-    AliceSaveHelper.saveCalls(context, callsSubject.value!, _brightness);
+    AliceSaveHelper.saveCalls(context, callsSubject.value, _brightness);
   }
 }
