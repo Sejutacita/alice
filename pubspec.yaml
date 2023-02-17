@@ -22,7 +22,7 @@ dependencies:
   sensors: ^2.0.0
   share: ^2.0.1
   chopper: ^4.0.0-nullsafety.1
-  better_player: ^0.0.65
+  better_player: ^0.0.83
   collection: ^1.15.0
 
 dev_dependencies:
